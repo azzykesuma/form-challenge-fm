@@ -104,7 +104,11 @@ const Form = () => {
             control={control}
             name="queryType"
             render={({ field: { onChange, value } }) => (
-              <RadioGroup value={value} onValueChange={onChange} className='flex flex-col md:flex-row'>
+              <RadioGroup
+                value={value}
+                onValueChange={onChange}
+                className="flex flex-col md:flex-row"
+              >
                 <div
                   className={`${
                     value === "general" ? "bg-green-200 text-black" : undefined
@@ -128,10 +132,10 @@ const Form = () => {
               </RadioGroup>
             )}
             rules={{
-                required: {
-                    value: true,
-                    message: "Please select a query type",
-                }
+              required: {
+                value: true,
+                message: "Please select a query type",
+              },
             }}
           />
           <div className="h-4">
@@ -165,10 +169,10 @@ const Form = () => {
               />
             )}
             rules={{
-                required: {
-                    value: true,
-                    message: "Message is required",
-                }
+              required: {
+                value: true,
+                message: "Message is required",
+              },
             }}
           />
           <div className="h-4">
@@ -186,33 +190,35 @@ const Form = () => {
             )}
           </div>
         </div>
-        <div className="mb-3 items-top flex space-x-2">
-          <Controller
-            control={control}
-            name="consent"
-            render={({ field: { onChange, value } }) => (
-              <Checkbox
-                id="consent"
-                value={value.toString()}
-                onCheckedChange={onChange}
-              />
-            )}
-            rules={{
+        <div className="mb-3">
+          <div className="items-top flex space-x-2">
+            <Controller
+              control={control}
+              name="consent"
+              render={({ field: { onChange, value } }) => (
+                <Checkbox
+                  id="consent"
+                  value={value.toString()}
+                  onCheckedChange={onChange}
+                />
+              )}
+              rules={{
                 required: {
-                    value: true,
-                    message: "To submit this form, please consent to being contacted",
-                }
-            }}
-          />
-          <div className="grid gap-1.5 leading-none">
-            <label
-              htmlFor="terms1"
-              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            >
-              I consent to being contacted by the team *
-            </label>
+                  value: true,
+                  message:
+                    "To submit this form, please consent to being contacted",
+                },
+              }}
+            />
+            <div className="grid gap-1.5 leading-none">
+              <label
+                htmlFor="terms1"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                I consent to being contacted by the team *
+              </label>
+            </div>
           </div>
-        </div>
           <div className="h-4">
             {errors.consent && (
               <div className="flex items-center gap-2 mt-2">
@@ -227,8 +233,9 @@ const Form = () => {
               </div>
             )}
           </div>
+        </div>
         <m.button
-          className="bg-green-600 p-3 w-full rounded-lg text-white font-bold mt-4"
+          className="bg-green-600 p-3 w-full rounded-lg text-white font-bold mt-6"
           whileTap={{ scale: 0.9 }}
         >
           Submit
